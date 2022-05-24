@@ -21,7 +21,7 @@ def get_ami_list(older_days):
         taginfo = image['Tags']
         for tagName in taginfo:
             #Filter only the images having tag value as Proj1AMI
-            if (tagName['Value'] == 'Proj1AMI'):
+            if (tagName['Value'] == 'Packers-Build-ID'):
                 ami_creation = image['CreationDate']
                 imageID = image['ImageId']
                 print("=================================================")
@@ -33,7 +33,8 @@ def get_ami_list(older_days):
  
 def get_delete_date(older_days):
     delete_time = datetime.now(tz=timezone.utc) - timedelta(days=older_days)
-    return delete_time;
+    #return delete_time;
+    print("AMI images which are older than " + str(older_days) + " days will be deregistered")
  
 def delete_ami(imageID):
     print("Deregistering Image ID: " + imageID)
