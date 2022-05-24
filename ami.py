@@ -19,12 +19,18 @@ for ami in packer_build_ID:
     ami_id = ami['ImageId']
     ami_location = ami['ImageLocation']
     state = ami['State']
-    print(ami_id, creation_date, ami_location, state)
+    #print(ami_id, creation_date, ami_location, state)
 
 for tag in Tags:
     tag_key = tag['Key']
     tag_value = tag['Value']
     print(tag_key, tag_value)
+
+if tag_value == '1':
+    print("AMI is due for deletion")
+else:
+    print("AMI is not due for deletion")
+
 
 
 
